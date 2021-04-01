@@ -12,20 +12,75 @@
 }
 body {
   background: #eee;
-  margin: 2.5rem auto;
+  margin: 2.5rem auto 0;
   padding: 0 1rem;
   max-width: 650px;
   line-height: 1.6;
   font-size: 1.125rem;
   color: #333;
+  text-align: center;
+}
+h1 {
+  line-height: 1.2;
+}
+input {
+  border: 0;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 1.125rem;
+  background: white;
+  width: 13rem;
+  max-width: 100%;
+  margin-bottom: 1rem;
+}
+button {
+  appearance: none;
+  border: 0;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 1.125rem;
+  background: #ccc;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+button:active {
+  background: #aaa;
+}
+img {
+  max-width: 100%;
+  max-height: calc(100vh - 16rem);
+  margin: 0 auto;
+}
+.error {
+  color: red;
+  font-weight: bold;
 }
   </style>
 </head>
 <body>
   <h1>Easter Egg Hunt</h1>
-  
+  <p>38 eggs hidden in the shed. Happy hunting. To infinity and beyond!</p>
+  <form>
+    <input>
+    <button>Submit</button>
+  </form>
+  <img src="img.jpg" style="display:none"/>
+  <p class="error" style="display:none">Sorry, try again.</p>
   <script>
-
+document.querySelector('form').addEventListener('submit', e => {
+  e.preventDefault();
+  if (document.querySelector('input').value.toLocaleLowerCase().trim() === 'yum66115abab422319') {
+    document.querySelector('img').style.display = '';
+    document.querySelector('.error').style.display = 'none';
+  } else {
+    document.querySelector('.error').style.display = '';
+    document.querySelector('img').style.display = 'none';
+  }
+});
+document.querySelector('input').addEventListener('input', e => {
+  document.querySelector('img').style.display = 'none';
+  document.querySelector('.error').style.display = 'none';
+});
   </script>
 </body>
 </html>
